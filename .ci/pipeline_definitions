@@ -1,0 +1,31 @@
+etcd:
+  template: 'default'
+  base_definition:
+    repo: ~
+    traits:
+      version:
+        preprocess:
+          'noop'
+        inject_effective_version: true
+      publish:
+        dockerimages:
+          etcd:
+            registry: 'gcr-readwrite'
+            image: 'eu.gcr.io/gardener-project/gardener/etcd'
+            dockerfile: 'Dockerfile'
+            tag_as_latest: True
+            inputs:
+              repos:
+                source: ~
+              steps:
+                get_etcd_version: ~
+    steps:
+      get_etcd_version:
+        image: 'eu.gcr.io/gardener-project/cc/job-image:1.778.0'
+        output_dir: 'binary'
+
+  jobs:
+    build-image:
+      traits:
+        cronjob:
+          interval: '1d'
