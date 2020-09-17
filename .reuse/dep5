@@ -1,0 +1,28 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Gardener etcd-custom image
+Upstream-Contact: The Gardener project <gardener@googlegroups.com>
+Source: https://github.com/gardener/etcd-custom-image
+
+# --------------------------------------------------
+# source code
+
+Files: **
+Copyright: 2017-2020 SAP SE or an SAP affiliate company and Gardener contributors
+License: Apache-2.0
+
+# --------------------------------------------------
+# documentation
+
+Files:
+  docs/**
+  CONTRIBUTING.md
+  README.md
+Copyright: 2017-2020 SAP SE or an SAP affiliate company and Gardener contributors
+License: CC-BY-4.0
+
+# --------------------------------------------------
+# dependencies
+
+# Files: vendor/another/3rd-party/lib/**
+# Copyright: YEAR OWNER
+# License: SPDX License ID
