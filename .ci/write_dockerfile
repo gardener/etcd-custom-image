@@ -12,6 +12,8 @@ echo $SOURCE_PATH
 pwd
 ls -al
 
+pwd ls -al
+
 if [[ -z "${SOURCE_PATH}" ]]; then
   export SOURCE_PATH="$(readlink -f "$(dirname ${0})/..")"
 else
