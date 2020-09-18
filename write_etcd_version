@@ -25,5 +25,5 @@ cat << EOF > ${VERSION_FILE}
 $VERSION
 EOF
 
-sedStr="s!%%ETCD_VERSION%%!$VERSION!g;"
-sed -r "$sedStr" $DOCKERFILE
+sedStr="s\!%%ETCD_VERSION%%\!$VERSION\!g;"
+sed -i -e "$sedStr" $DOCKERFILE
