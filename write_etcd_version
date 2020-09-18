@@ -21,13 +21,13 @@ DOCKERFILE="${SOURCE_PATH}/Dockerfile"
 
 ###############################################################################
 
-read line
-echo "line: $line"
+# read line
+# echo "line: $line"
 
-# while read line
-# do
-#   echo "$line"
-# done < "/dev/stdin"
+while read line
+do
+  echo "line: $line"
+done < "/dev/stdin"
 
 echo "@: $@"
 echo "VERSION: $VERSION"
