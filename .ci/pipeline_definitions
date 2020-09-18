@@ -19,9 +19,9 @@ etcd-custom-image:
               repos:
                 source: ~
               steps:
-                get_etcd_version: ~
+                write_dockerfile: ~
     steps:
-      get_etcd_version:
+      write_dockerfile:
         image: 'eu.gcr.io/gardener-project/cc/job-image:1.778.0'
         output_dir: 'source'
 

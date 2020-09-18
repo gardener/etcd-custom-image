@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+# SPDX-FileCopyrightText: 2020 SAP SE or an SAP affiliate company and Gardener contributors
+# SPDX-License-Identifier: Apache-2.0
+
+set -e
+
+# For the build step concourse will set the following environment variables:
+# SOURCE_PATH - path to component repository root directory.
+# BINARY_PATH - path to an existing (empty) directory to place build results into.
+if [[ -z "${SOURCE_PATH}" ]]; then
+  export SOURCE_PATH="$(readlink -f $(dirname ${0})/..)"
+else
+  export SOURCE_PATH="$(readlink -f "${SOURCE_PATH}")"
+fi
+
+cd "${SOURCE_PATH}"
+
+VERSION_FILE="${SOURCE_PATH}/VERSION"
+DOCKERFILE="${SOURCE_PATH}/Dockerfile"
+
+###############################################################################
+
+echo "VERSION: $VERSION"
+
+cd $SOURCE_PATH
+ls -al
+
+sed -i "s/ETCD_VERSION/$VERSION/g" $DOCKERFILE
+
