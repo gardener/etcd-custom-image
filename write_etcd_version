@@ -21,9 +21,9 @@ DOCKERFILE="${SOURCE_PATH}/Dockerfile"
 
 ###############################################################################
 
+sedStr="s\!%%ETCD_VERSION%%\!$VERSION\!g;"
+sed -i -e "$sedStr" $DOCKERFILE
+
 cat << EOF > ${VERSION_FILE}
 $VERSION
 EOF
-
-sedStr="s\!%%ETCD_VERSION%%\!$VERSION\!g;"
-sed -i -e "$sedStr" $DOCKERFILE
