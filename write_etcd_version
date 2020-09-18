@@ -15,13 +15,13 @@ fi
 
 cd "${SOURCE_PATH}"
 
+VERSION="$1"
 VERSION_FILE="${SOURCE_PATH}/VERSION"
-VERSION=$1
 DOCKERFILE="${SOURCE_PATH}/Dockerfile"
 
 ###############################################################################
 
-sedStr="s\!%%ETCD_VERSION%%\!$VERSION\!g;"
+sedStr="s!%%ETCD_VERSION%%!$VERSION!g;"
 echo $sedStr
 sed -i -e "$sedStr" $DOCKERFILE
 
