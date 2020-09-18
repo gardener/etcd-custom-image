@@ -21,7 +21,8 @@ DOCKERFILE="${SOURCE_PATH}/Dockerfile"
 
 ###############################################################################
 
-echo $VERSION
+echo "VERSION: $VERSION"
+echo "1: $1"
 sed -i "s/ETCD_VERSION/$VERSION/g" $DOCKERFILE
 
 cat $DOCKERFILE
