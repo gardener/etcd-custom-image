@@ -16,8 +16,19 @@ fi
 cd "${SOURCE_PATH}"
 
 VERSION_FILE="${SOURCE_PATH}/VERSION"
+DOCKERFILE="${SOURCE_PATH}/Dockerfile"
 
 ###############################################################################
 
-export VERSION=`/cc/utils/cli.py githubutil greatest_release_version --github-repository-url https://github.com/etcd-io/etcd --anonymous`
-echo v$VERSION
+VERSION=`/cc/utils/cli.py githubutil greatest_release_version --github-repository-url https://github.com/etcd-io/etcd --anonymous`
+export VERSION="v$VERSION"
+
+cat << EOF > ${VERSION_FILE}
+$VERSION
+EOF
+
+sed -i "s/ETCD_VERSION/$VERSION/g" $DOCKERFILE
+
+cat $DOCKERFILE
+
+echo $VERSION
