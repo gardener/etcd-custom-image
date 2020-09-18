@@ -6,7 +6,6 @@ etcd-custom-image:
       version:
         preprocess:
           'noop'
-        inject_effective_version: true
       publish:
         dockerimages:
           etcd:
