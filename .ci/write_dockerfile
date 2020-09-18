@@ -17,12 +17,9 @@ else
   export SOURCE_PATH="$(readlink -f "${SOURCE_PATH}")"
 fi
 
-echo "BUILD_PATH: ${BUILD_PATH}"
-if [[ -z "${BUILD_PATH}" ]]; then
-  export BUILD_PATH="${SOURCE_PATH}/build"
-else
-  export BUILD_PATH="$(readlink -f "${BUILD_PATH}")/build"
-fi
+echo "new"
+echo "BUILD_PATH: $(readlink -f "${BUILD_PATH}")"
+export BUILD_PATH="$(readlink -f "${BUILD_PATH}")"
 
 cd "${SOURCE_PATH}"
 
@@ -42,6 +39,6 @@ cd "${SOURCE_PATH}"
 
 sed -i "s/ETCD_VERSION/$EFFECTIVE_VERSION/g" $DOCKERFILE
 
-cd $BUILD_PATH
-pwd
-ls -al
+cat $DOCKERFILE
+
+cp $DOCKERFILE $BUILD_PATH/Dockerfile
