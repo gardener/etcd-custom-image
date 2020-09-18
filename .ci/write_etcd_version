@@ -16,7 +16,7 @@ fi
 cd "${SOURCE_PATH}"
 
 VERSION_FILE="${SOURCE_PATH}/VERSION"
-DOCKERFILE="${SOURCE_PATH}/Dockerfile"
+DOCKERFILE="${SOURCE_PATH}/build/Dockerfile"
 
 ###############################################################################
 
