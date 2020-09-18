@@ -15,6 +15,9 @@ etcd-custom-image:
             image: 'eu.gcr.io/gardener-project/gardener/etcd'
             dockerfile: 'Dockerfile'
             tag_as_latest: True
+            inputs:
+              repos:
+                source: ~
 
   jobs:
     build-image:
