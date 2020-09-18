@@ -17,6 +17,7 @@ else
   export SOURCE_PATH="$(readlink -f "${SOURCE_PATH}")"
 fi
 
+echo "BUILD_PATH: ${BUILD_PATH}"
 if [[ -z "${BUILD_PATH}" ]]; then
   export BUILD_PATH="${SOURCE_PATH}/build"
 else
@@ -35,6 +36,7 @@ echo "EFFECTIVE_VERSION: $EFFECTIVE_VERSION"
 cd build
 pwd
 ls -al
+cat Dockerfile
 
 cd "${SOURCE_PATH}"
 
