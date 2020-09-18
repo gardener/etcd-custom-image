@@ -4,8 +4,8 @@ etcd-custom-image:
     repo: ~
     traits:
       version:
-        preprocess:
-          'noop'
+        preprocess: 'noop'
+        versionfile: '../VERSION'
       publish:
         dockerimages:
           etcd:
