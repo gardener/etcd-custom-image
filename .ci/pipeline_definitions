@@ -13,7 +13,7 @@ etcd-custom-image:
           etcd:
             registry: 'gcr-readwrite'
             image: 'eu.gcr.io/gardener-project/gardener/etcd'
-            dockerfile: 'Dockerfile'
+            dockerfile: 'build/Dockerfile'
             tag_as_latest: True
             inputs:
               repos:
@@ -23,7 +23,7 @@ etcd-custom-image:
     steps:
       write_dockerfile:
         image: 'eu.gcr.io/gardener-project/cc/job-image:1.778.0'
-        output_dir: 'source'
+        output_dir: 'build'
 
   jobs:
     build-image:

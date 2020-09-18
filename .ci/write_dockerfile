@@ -6,13 +6,10 @@ set -e
 
 # For the build step concourse will set the following environment variables:
 # SOURCE_PATH - path to component repository root directory.
-# BINARY_PATH - path to an existing (empty) directory to place build results into.
 
 echo $SOURCE_PATH
 pwd
 ls -al
-
-pwd ls -al
 
 if [[ -z "${SOURCE_PATH}" ]]; then
   export SOURCE_PATH="$(readlink -f "$(dirname ${0})/..")"
@@ -20,10 +17,16 @@ else
   export SOURCE_PATH="$(readlink -f "${SOURCE_PATH}")"
 fi
 
+if [[ -z "${BUILD_PATH}" ]]; then
+  export BUILD_PATH="${SOURCE_PATH}/build"
+else
+  export BUILD_PATH="$(readlink -f "${BUILD_PATH}")/build"
+fi
+
 cd "${SOURCE_PATH}"
 
 VERSION_FILE="${SOURCE_PATH}/VERSION"
-DOCKERFILE="${SOURCE_PATH}/Dockerfile"
+DOCKERFILE="${SOURCE_PATH}/build/Dockerfile"
 
 ###############################################################################
 
