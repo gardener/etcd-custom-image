@@ -8,7 +8,7 @@ set -e
 # SOURCE_PATH - path to component repository root directory.
 # BINARY_PATH - path to an existing (empty) directory to place build results into.
 if [[ -z "${SOURCE_PATH}" ]]; then
-  export SOURCE_PATH="$(readlink -f $(dirname ${0})/..)"
+  export SOURCE_PATH="$(readlink -f "$(dirname ${0})/..")"
 else
   export SOURCE_PATH="$(readlink -f "${SOURCE_PATH}")"
 fi
@@ -20,10 +20,15 @@ DOCKERFILE="${SOURCE_PATH}/Dockerfile"
 
 ###############################################################################
 
-echo "VERSION: $VERSION"
+echo "EFFECTIVE_VERSION: $EFFECTIVE_VERSION"
 
 cd $SOURCE_PATH
+pwd
+ls -al
+cd ..
 ls -al
 
-sed -i "s/ETCD_VERSION/$VERSION/g" $DOCKERFILE
+cd $SOURCE_PATH
+
+sed -i "s/ETCD_VERSION/$EFFECTIVE_VERSION/g" $DOCKERFILE
 

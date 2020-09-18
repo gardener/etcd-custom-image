@@ -21,4 +21,5 @@ DOCKERFILE="${SOURCE_PATH}/Dockerfile"
 ###############################################################################
 
 cat $VERSION_FILE
+echo $EFFECTIVE_VERSION
 cat $DOCKERFILE
