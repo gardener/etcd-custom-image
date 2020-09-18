@@ -1,4 +1,4 @@
-etcd:
+etcd-custom-image:
   template: 'default'
   base_definition:
     repo: ~
@@ -28,4 +28,4 @@ etcd:
     build-image:
       traits:
         cronjob:
-          interval: '1d'
+          interval: '24h'
