@@ -15,27 +15,10 @@ fi
 
 cd "${SOURCE_PATH}"
 
-VERSION="$1"
 VERSION_FILE="${SOURCE_PATH}/VERSION"
 DOCKERFILE="${SOURCE_PATH}/Dockerfile"
 
 ###############################################################################
 
-# read line
-# echo "line: $line"
-
-while read line
-do
-  echo "line: $line"
-done < "/dev/stdin"
-
-echo "@: $@"
-echo "VERSION: $VERSION"
-echo "1: $1"
-sed -i "s/ETCD_VERSION/$VERSION/g" $DOCKERFILE
-
+cat $VERSION_FILE
 cat $DOCKERFILE
-
-cat << EOF > ${VERSION_FILE}
-$VERSION
-EOF
