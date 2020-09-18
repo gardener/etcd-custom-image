@@ -21,7 +21,7 @@ etcd-custom-image:
     steps:
       get_etcd_version:
         image: 'eu.gcr.io/gardener-project/cc/job-image:1.778.0'
-        output_dir: 'binary'
+        output_dir: 'source'
 
   jobs:
     build-image:
