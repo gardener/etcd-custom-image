@@ -5,7 +5,8 @@ etcd-custom-image:
     traits:
       version:
         preprocess: 'noop'
-        versionfile: '../VERSION'
+        version_interface: 'callback'
+        read_callback: 'get_etcd_version'
       publish:
         dockerimages:
           etcd:
