@@ -32,13 +32,14 @@ DOCKERFILE="${SOURCE_PATH}/build/Dockerfile"
 
 echo "EFFECTIVE_VERSION: $EFFECTIVE_VERSION"
 
-cd $SOURCE_PATH
+cd build
 pwd
 ls -al
-cd ..
-ls -al
 
-cd $SOURCE_PATH
+cd "${SOURCE_PATH}"
 
 sed -i "s/ETCD_VERSION/$EFFECTIVE_VERSION/g" $DOCKERFILE
 
+cd $BUILD_PATH
+pwd
+ls -al
