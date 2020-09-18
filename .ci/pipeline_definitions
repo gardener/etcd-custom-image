@@ -7,6 +7,7 @@ etcd-custom-image:
         preprocess: 'noop'
         version_interface: 'callback'
         read_callback: '.ci/get_etcd_version'
+        write_callback: '.ci/write_etcd_version'
       publish:
         dockerimages:
           etcd:
