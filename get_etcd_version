@@ -29,6 +29,4 @@ EOF
 
 sed -i "s/ETCD_VERSION/$VERSION/g" $DOCKERFILE
 
-cat $DOCKERFILE
-
 echo $VERSION
