@@ -6,8 +6,8 @@ etcd-custom-image:
       version:
         preprocess: 'noop'
         version_interface: 'callback'
-        read_callback: '.ci/get_etcd_version'
-        write_callback: '.ci/write_etcd_version'
+        read_callback: 'get_etcd_version'
+        write_callback: 'write_etcd_version'
       publish:
         dockerimages:
           etcd:
@@ -18,12 +18,6 @@ etcd-custom-image:
             inputs:
               repos:
                 source: ~
-              steps:
-                get_etcd_version: ~
-    steps:
-      get_etcd_version:
-        image: 'eu.gcr.io/gardener-project/cc/job-image:1.778.0'
-        output_dir: 'source'
 
   jobs:
     build-image:

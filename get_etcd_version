@@ -19,6 +19,5 @@ VERSION_FILE="${SOURCE_PATH}/VERSION"
 
 ###############################################################################
 
-cat << EOF > ${VERSION_FILE}
-$1
-EOF
+export VERSION=`/cc/utils/cli.py githubutil greatest_release_version --github-repository-url https://github.com/etcd-io/etcd --anonymous`
+echo v$VERSION
