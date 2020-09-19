@@ -41,6 +41,9 @@ echo "git diff:"
 git --no-pager diff
 
 echo
-echo "Publishing version change"
-git diff-index --quiet HEAD || git commit -am "Updated etcd image version to $VERSION"
-git --no-pager log -1
+if git diff-index --quiet HEAD; [ $? -eq 0 ] ; then
+  echo "No version change"
+else
+  echo "Publishing version change"
+  git commit -am "Updated etcd image version to $VERSION" || git --no-pager log -1
+fi
