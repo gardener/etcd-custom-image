@@ -17,7 +17,6 @@ etcd-custom-image:
           publish_to:
           - source
     head-update:
-      trigger: False
       traits:
         publish:
           dockerimages:
