@@ -7,10 +7,6 @@ set -e
 # For the build step concourse will set the following environment variables:
 # SOURCE_PATH - path to component repository root directory.
 
-echo $SOURCE_PATH
-pwd
-ls -al
-
 if [[ -z "${SOURCE_PATH}" ]]; then
   export SOURCE_PATH="$(readlink -f "$(dirname ${0})/..")"
 else
@@ -27,7 +23,7 @@ DOCKERFILE_TEMPLATE="${SOURCE_PATH}/Dockerfile.template"
 
 VERSION=`/cc/utils/cli.py githubutil greatest_release_version --github-repository-url https://github.com/etcd-io/etcd --anonymous`
 export VERSION="v$VERSION"
-echo "NEW VERSION: $VERSION"
+echo "FETCHED ETCD VERSION: $VERSION"
 
 cat << EOF > ${VERSION_FILE}
 $VERSION
@@ -46,5 +42,7 @@ git --no-pager diff
 
 echo
 echo "Publishing version change"
+set +e
 git commit -am "Updated etcd image version to $VERSION"
-echo $(git log -1)
+set -e
+git --no-pager log -1
