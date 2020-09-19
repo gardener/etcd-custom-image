@@ -25,9 +25,6 @@ DOCKERFILE_TEMPLATE="${SOURCE_PATH}/Dockerfile.template"
 
 ###############################################################################
 
-OLD_VERSION="$(cat $VERSION_FILE)"
-echo "OLD VERSION: $OLD_VERSION"
-
 VERSION=`/cc/utils/cli.py githubutil greatest_release_version --github-repository-url https://github.com/etcd-io/etcd --anonymous`
 export VERSION="v$VERSION"
 echo "NEW VERSION: $VERSION"
@@ -40,10 +37,14 @@ sed -e "s/ETCD_VERSION/$VERSION/g" $DOCKERFILE_TEMPLATE > $DOCKERFILE
 
 cat $DOCKERFILE
 
+echo
 echo "EFFECTIVE_VERSION: $EFFECTIVE_VERSION"
 
-git diff
+echo
+echo "git diff:"
+git --no-pager diff
 
+echo
 echo "Publishing version change"
 git commit -am "Updated etcd image version to $VERSION"
 echo $(git log -1)

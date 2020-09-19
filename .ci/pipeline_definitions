@@ -16,6 +16,7 @@ etcd-custom-image:
           image: 'eu.gcr.io/gardener-project/cc/job-image:1.778.0'
           publish_to:
           - source
+
     head-update:
       traits:
         publish:
