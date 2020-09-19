@@ -4,29 +4,28 @@ etcd-custom-image:
     repo: ~
     traits:
       version:
-        preprocess: 'noop'
-        version_interface: 'callback'
-        read_callback: '.ci/get_etcd_version'
-        write_callback: '.ci/write_etcd_version'
-      publish:
-        dockerimages:
-          etcd:
-            registry: 'gcr-readwrite'
-            image: 'eu.gcr.io/gardener-project/gardener/etcd'
-            dockerfile: 'build/Dockerfile'
-            tag_as_latest: True
-            inputs:
-              repos:
-                source: ~
-              steps:
-                write_dockerfile: ~
-    steps:
-      write_dockerfile:
-        image: 'eu.gcr.io/gardener-project/cc/job-image:1.778.0'
-        output_dir: 'build'
+          preprocess: 'noop'
 
   jobs:
-    build-image:
+    update-version:
       traits:
         cronjob:
           interval: '24h'
+      steps:
+        update_version:
+          image: 'eu.gcr.io/gardener-project/cc/job-image:1.778.0'
+          publish_to:
+          - source
+    head-update:
+      trigger: False
+      traits:
+        publish:
+          dockerimages:
+            etcd:
+              registry: 'gcr-readwrite'
+              image: 'eu.gcr.io/gardener-project/gardener/etcd'
+              dockerfile: 'Dockerfile'
+              tag_as_latest: True
+              inputs:
+                repos:
+                  source: ~
