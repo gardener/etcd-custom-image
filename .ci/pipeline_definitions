@@ -18,6 +18,8 @@ etcd-custom-image:
           - source
 
     head-update:
+      repo:
+        trigger: true
       traits:
         publish:
           dockerimages:
@@ -29,3 +31,7 @@ etcd-custom-image:
               inputs:
                 repos:
                   source: ~
+        release:
+          nextversion: noop
+          release_commit_publishing_policy: tag_only
+        component_descriptor: ~
