@@ -46,8 +46,8 @@ if git diff-index --quiet HEAD; [ $? -eq 0 ] ; then
 else
   echo "Publishing version change"
   git commit -am "Updated etcd image version to $VERSION
-\`\`\`feature operator
-Update etcd from $EFFECTIVE_VERSION to $VERSION. :warning: This will cause a restart of the etcd.
+\`\`\`noteworthy operator
+Update etcd version from $EFFECTIVE_VERSION to $VERSION. :warning: This will cause a restart of the etcd.
 \`\`\`
   " || git --no-pager log -1
 fi

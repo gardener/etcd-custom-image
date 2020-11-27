@@ -21,6 +21,7 @@ etcd-custom-image:
       repo:
         trigger: true
       traits:
+        draft_release: ~
         publish:
           dockerimages:
             etcd:
