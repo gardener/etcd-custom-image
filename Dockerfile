@@ -7,4 +7,5 @@ RUN apt update
 RUN apt install -y bash curl wget
 
 WORKDIR /
+COPY etcd_bootstrap_script.sh /var/etcd/bin/bootstrap.sh
 ENTRYPOINT ["/usr/local/bin/etcd"]
