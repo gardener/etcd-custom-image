@@ -7,16 +7,6 @@ etcd-custom-image:
           preprocess: 'noop'
 
   jobs:
-    update-version:
-      traits:
-        cronjob:
-          interval: '24h'
-      steps:
-        update_version:
-          image: 'eu.gcr.io/gardener-project/cc/job-image:1.778.0'
-          publish_to:
-          - source
-
     head-update:
       repo:
         trigger: true
