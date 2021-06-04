@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2020 SAP SE or an SAP affiliate company and Gardener contributors
 # SPDX-License-Identifier: Apache-2.0
 
-FROM gcr.io/etcd-development/etcd:v3.5.0-beta.4
+FROM gcr.io/etcd-development/etcd:v3.5.0-rc.0
 
 RUN apt update
 RUN apt install -y bash curl wget
