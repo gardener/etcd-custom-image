@@ -41,16 +41,20 @@ check_and_start_etcd(){
         "New")
               wget "$BACKUP_ENDPOINT/initialization/start?mode=$1$FAIL_BELOW_REVISION_PARAMETER" -S -O - ;;
         "Progress")
+              sleep 1;
               continue;;
         "Failed")
+              sleep 1;
               continue;;
         "Successful")
               echo "Bootstrap preprocessing end time: $(date)"
               start_managed_etcd
               break
               ;;
+        *)
+              sleep 1;
+              ;;
         esac;
-        sleep 1;
       done
 }
 
