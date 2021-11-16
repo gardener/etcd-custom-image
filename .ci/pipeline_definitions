@@ -23,7 +23,7 @@ etcd-custom-image:
       traits:
         draft_release: ~
         publish:
-          oci-builder: 'concourse-image-resource'
+          oci-builder: 'docker'
           dockerimages:
             etcd:
               registry: 'gcr-readwrite'
