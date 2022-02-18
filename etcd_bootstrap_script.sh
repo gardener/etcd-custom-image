@@ -23,7 +23,15 @@ trap_and_propagate() {
 
 start_managed_etcd(){
       rm -rf $VALIDATION_MARKER
-      etcd --config-file /var/etcd/config/etcd.conf.yaml &
+      CONFIG_FILE=/etc/etcd.conf.yaml
+      curl "$BACKUP_ENDPOINT/config" -o $CONFIG_FILE
+      minimumsize=50
+      actualsize=$(wc -c <$CONFIG_FILE)
+      if [ $actualsize -le $minimumsize ]; then
+          echo "downloaded config file size is less than $(minimumsize) bytes"
+          exit 1
+      fi
+      etcd --config-file $CONFIG_FILE &
       ETCDPID=$!
       trap_and_propagate $ETCDPID INT TERM
       wait $ETCDPID
