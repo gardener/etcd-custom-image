@@ -5,7 +5,7 @@ VALIDATION_MARKER=/var/etcd/data/validation_marker
 # Add self-signed CA to list of root CA-certificates
 if [ $ENABLE_TLS = 'true' ]
 then
-  cat /var/etcd/ssl/client/ca/* >> /etc/ssl/certs/ca-certificates.crt
+  cat /var/etcd/ssl/client/ca/*.crt >> /etc/ssl/certs/ca-certificates.crt
   if [ $? -ne 0 ]
   then
     echo "failed to update root certificate list"
