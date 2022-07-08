@@ -22,6 +22,12 @@ trap_and_propagate() {
 }
 
 start_managed_etcd(){
+      arch=$(uname -m)
+      if [ $arch = "aarch64" ] || [ $arch = "arm64" ]; then
+          # Running etcd on ARM has experimental support for version 3.4.x
+          # https://etcd.io/docs/v3.4/op-guide/supported-platform/
+          export ETCD_UNSUPPORTED_ARCH=arm64
+      fi
       rm -rf $VALIDATION_MARKER
       CONFIG_FILE=/etc/etcd.conf.yaml
       curl "$BACKUP_ENDPOINT/config" -o $CONFIG_FILE
