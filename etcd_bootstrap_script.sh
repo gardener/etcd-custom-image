@@ -30,7 +30,7 @@ start_managed_etcd(){
       fi
       rm -rf $VALIDATION_MARKER
       CONFIG_FILE=/etc/etcd.conf.yaml
-      curl "$BACKUP_ENDPOINT/config" -o $CONFIG_FILE
+      curl --retry 5 --retry-delay 5 --retry-all-errors "$BACKUP_ENDPOINT/config" -o $CONFIG_FILE
       minimumsize=50
       actualsize=$(wc -c <$CONFIG_FILE)
       if [ $actualsize -le $minimumsize ]; then
