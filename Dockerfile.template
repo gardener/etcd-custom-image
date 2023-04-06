@@ -6,7 +6,7 @@ FROM gcr.io/etcd-development/etcd:ETCD_VERSION as source-arm64
 
 FROM source-$TARGETARCH as source
 
-FROM alpine:3.15.7
+FROM alpine:3.15.8
 
 WORKDIR /
 
