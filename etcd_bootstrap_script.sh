@@ -72,6 +72,13 @@ check_and_start_etcd(){
       done
 }
 
+umask 0077
+if [ $? -ne 0 ]
+then
+      echo "failed to set umask to 0077"
+      exit 1
+fi
+
 echo "Bootstrap preprocessing start time: $(date)"
 if [ ! -f $VALIDATION_MARKER ] ;
 then
