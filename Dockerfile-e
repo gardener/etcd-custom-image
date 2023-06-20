@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 FROM gcr.io/etcd-development/etcd:%%ETCD_VERSION%% as source
-FROM alpine:3.15.8
+FROM alpine:3.18.2
 
 WORKDIR /
 
