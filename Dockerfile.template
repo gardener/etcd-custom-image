@@ -16,4 +16,4 @@ COPY --from=source /usr/local/bin/etcd /usr/local/bin
 COPY --from=source /usr/local/bin/etcdctl /usr/local/bin
 COPY etcd_bootstrap_script.sh /var/etcd/bin/bootstrap.sh
 
-ENTRYPOINT ["/usr/local/bin/etcd"]
+ENTRYPOINT ["/var/etcd/bin/bootstrap.sh"]
