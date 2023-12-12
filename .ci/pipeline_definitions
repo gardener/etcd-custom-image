@@ -1,7 +1,5 @@
 etcd-custom-image:
-  template: 'default'
   base_definition:
-    repo: ~
     traits:
       version:
           preprocess: 'noop'
@@ -13,7 +11,6 @@ etcd-custom-image:
           interval: '24h'
       steps:
         update_version:
-          image: 'eu.gcr.io/gardener-project/cc/job-image:1.778.0'
           publish_to:
           - source
 
@@ -26,8 +23,7 @@ etcd-custom-image:
           oci-builder: 'docker'
           dockerimages:
             etcd:
-              registry: 'gcr-readwrite'
-              image: 'eu.gcr.io/gardener-project/gardener/etcd'
+              image: europe-docker.pkg.dev/gardener-project/releases/gardener/etcd
               dockerfile: 'Dockerfile'
               tag_as_latest: True
               inputs:
@@ -37,6 +33,7 @@ etcd-custom-image:
           nextversion: noop
           release_commit_publishing_policy: tag_only
         component_descriptor:
+          ocm_repository: europe-docker.pkg.dev/gardener-project/releases
           component_labels:
           - name: 'cloud.gardener.cnudie/dso/scanning-hints/source_analysis/v1'
             value:
