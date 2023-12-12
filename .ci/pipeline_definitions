@@ -1,7 +1,5 @@
 etcd-custom-image:
-  template: 'default'
   base_definition:
-    repo: ~
     traits:
       version:
           preprocess: 'noop'
@@ -19,8 +17,7 @@ etcd-custom-image:
           - linux/arm64
           dockerimages:
             etcd:
-              registry: 'gcr-readwrite'
-              image: 'eu.gcr.io/gardener-project/gardener/etcd'
+              image: europe-docker.pkg.dev/gardener-project/releases/gardener/etcd
               dockerfile: 'Dockerfile'
               tag_as_latest: True
               inputs:
@@ -38,4 +35,5 @@ etcd-custom-image:
         release:
           nextversion: noop
           release_commit_publishing_policy: tag_only
-        component_descriptor: ~
+        component_descriptor:
+          ocm_repository: europe-docker.pkg.dev/gardener-project/releases
