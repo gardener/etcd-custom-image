@@ -28,7 +28,7 @@ start_managed_etcd(){
       minimumsize=50
       actualsize=$(wc -c <$CONFIG_FILE)
       if [ $actualsize -le $minimumsize ]; then
-          echo "downloaded config file size is less than $(minimumsize) bytes"
+          echo "downloaded config file size is less than $minimumsize bytes"
           exit 1
       fi
       etcd --config-file $CONFIG_FILE &
