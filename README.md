@@ -1,6 +1,5 @@
 # etcd-custom-image
-
-[![reuse compliant](https://reuse.software/badge/reuse-compliant.svg)](https://reuse.software/)
+[![REUSE status](https://api.reuse.software/badge/github.com/gardener/etcd-custom-image)](https://api.reuse.software/info/github.com/gardener/etcd-custom-image)
 
 This repository is used to produce a Docker image that contains the [etcd](https://github.com/etcd-io/etcd/) binary along with pre-installed CLI tools such as `bash`, `curl` and `wget`.
 
