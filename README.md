@@ -1,3 +1,8 @@
+# ⚠️ etcd-custom-image has now been <ins>archived</ins>.
+## Please use [etcd-wrapper](https://github.com/gardener/etcd-wrapper) instead.
+
+<br>
+
 # etcd-custom-image
 [![REUSE status](https://api.reuse.software/badge/github.com/gardener/etcd-custom-image)](https://api.reuse.software/info/github.com/gardener/etcd-custom-image)
 
