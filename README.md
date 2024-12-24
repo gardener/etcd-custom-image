@@ -1,5 +1,6 @@
-# ⚠️ etcd-custom-image has now been <ins>archived</ins>.
+# ⚠️ etcd-custom-image is <ins>deprecated</ins>, and has now been <ins>archived</ins>.
 ## Please use [etcd-wrapper](https://github.com/gardener/etcd-wrapper) instead.
+This repository will no longer be available from 1st April 2025 onwards.
 
 <br>
 
